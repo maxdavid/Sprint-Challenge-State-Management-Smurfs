@@ -1,0 +1,122 @@
+.App {
+  text-align: center;
+  width: 100%;
+  height: 80%;
+}
+
+.MainContainer {
+  width: 100%;
+  height: 100%;
+  background: url('../assets/smurf.png') bottom left no-repeat;
+}
+
+.TopBar {
+  width: 100%;
+  height: 80px;
+  padding: 20px 10px;
+  background-color: #588cc2;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Headline {
+  @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 48px;
+}
+
+.NavLinks {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 600px;
+  align-items: center;
+  @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,500,700&display=swap');
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.StyledLink {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+  outline: none;
+  &:hover {
+    opacity: 0.7;
+  }
+  &.active {
+    font-weight: 700;
+  }
+}
+
+.Smurfs {
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.SmurfContainer {
+  width: 350px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 20px;
+  background-color: #fffffff8;
+  &:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+}
+
+.SmurfName {
+  @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 36px;
+}
+
+.SmurfInfo {
+  padding-left: 10px;
+  color: #666;
+  @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400&display=swap');
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 400;
+  li {
+    margin-top: 10px;
+  }
+}
+
+form.InputForm {
+  width: 200px;
+  height: 180px;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  input {
+    padding: 5px;
+    width: 100%;
+  }
+  button {
+    @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,500,700&display=swap');
+    font-family: 'Montserrat Alternates', sans-serif;
+    padding: 10px 15px;
+    border-radius: 3px;
+    background-color: #588cc2;
+    color: white;
+  }
+}
+
+button.delete-button {
+  background-color: red;
+  color: white;
+}
