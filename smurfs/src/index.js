@@ -1,21 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
-import thunk from 'redux-thunk';
-// import logger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import { rootReducer } from './reducers';
-import { BrowserRouter as Router } from 'react-router-dom';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+import { StateProvider } from './helpers';
+import App from './components/App';
+// import thunk from 'redux-thunk';
+// import logger from 'redux-logger';
+// import { createStore, applyMiddleware } from 'redux';
+// import { Provider } from 'react-redux';
+import { rootReducer, initialState } from './reducers';
+import { BrowserRouter as Router } from 'react-router-dom';
+import './index.css';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
+  <Router>
+    <StateProvider initialState={initialState} reducer={rootReducer}>
       <App />
-    </Router>
-  </Provider>,
+    </StateProvider>
+  </Router>,
   document.getElementById('root')
 );

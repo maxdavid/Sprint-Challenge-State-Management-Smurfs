@@ -1,42 +1,50 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import { fetchSmurfs, deleteSmurf } from '../actions';
+import { useStateValue } from '../hooks';
 
 import Smurf from './Smurf';
 import './App.scss';
-import { connect } from 'react-redux';
-import { deleteSmurf, editSmurf } from '../actions';
 
-class Smurfs extends Component {
-  render() {
-    return (
-      <div className='Smurfs'>
-        {this.props.smurfs.map(smurf => {
-          return (
-            <Smurf
-              name={smurf.name}
-              id={smurf.id}
-              age={smurf.age}
-              height={smurf.height}
-              key={smurf.id}
-              onClick={() => deleteSmurf(smurf.id)}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
+const Smurfs = () => {
+  const [{ smurfs, fetching, error }, dispatch] = useStateValue();
 
-Smurf.defaultProps = {
-  smurfs: []
+  useEffect(() => {
+    fetchSmurfs(dispatch);
+  }, []);
+
+  if (fetching) return <h1>Loading...</h1>;
+  if (error) return <h1 style={{ color: 'red' }}>{error}</h1>;
+  return (
+    <div className='Smurfs'>
+      {smurfs.map(smurf => {
+        return (
+          <Smurf
+            name={smurf.name}
+            id={smurf.id}
+            age={smurf.age}
+            height={smurf.height}
+            key={smurf.id}
+            onClick={() => deleteSmurf(smurf.id)}
+          />
+        );
+      })}
+    </div>
+  );
 };
 
-const mapStateToProps = state => {
-  return {
-    smurfs: state.smurfs
-  };
-};
+export default Smurfs;
 
-export default connect(
-  mapStateToProps,
-  { editSmurf, deleteSmurf }
-)(Smurfs);
+// Smurf.defaultProps = {
+//   smurfs: []
+// };
+
+// const mapStateToProps = state => {
+//   return {
+//     smurfs: state.smurfs
+//   };
+// };
+
+// export default connect(
+//   mapStateToProps,
+//   { editSmurf, deleteSmurf }
+// )(Smurfs);
